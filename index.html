@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
 </head>
+
 <body>
 
 <div id="app">
-    <p>{{msg}}</p>
+    <p v-cloak>{{msg}}</p>
 </div>
 
 
