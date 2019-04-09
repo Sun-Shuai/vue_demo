@@ -16,9 +16,13 @@
     <!--v-cloak解决插值表达式闪烁问题-->
     <p v-cloak>{{msg}}+++++</p>
     <!--和插值表达式类似，默认没有闪烁问题-->
-    <p v-text="msg"></p>
+    <p v-text="msg">+++++</p>
 
     <!--插值表达式可以在两边加入其它内容，v-text不能-->
+
+
+    <!--v-html输出html语句-->
+    <div v-html="msg2"></div>
 </div>
 
 
@@ -30,7 +34,8 @@
     new Vue({
         el: '#app',
         data: {
-            msg: 'hello vue'
+            msg: 'hello vue',
+            msg2: '<h1>哈哈哈</h1>'
         }
     })
 </script>
