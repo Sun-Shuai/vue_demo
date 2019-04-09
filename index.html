@@ -23,6 +23,10 @@
 
     <!--v-html输出html语句-->
     <div v-html="msg2"></div>
+
+    <!--v-bind用于绑定属性，后面的内容当作js表达式来解析，简写为':'-->
+    <input type="button" value="按钮" :title="mytitle + '123'">
+
 </div>
 
 
@@ -35,7 +39,8 @@
         el: '#app',
         data: {
             msg: 'hello vue',
-            msg2: '<h1>哈哈哈</h1>'
+            msg2: '<h1>哈哈哈</h1>',
+            mytitle: '这是一个title'
         }
     })
 </script>
