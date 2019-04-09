@@ -33,7 +33,6 @@
     <input type="button" value="按钮" @mouseover="show">
 
 
-
 </div>
 
 
@@ -49,8 +48,8 @@
             msg2: '<h1>哈哈哈</h1>',
             mytitle: '这是一个title'
         },
-        methods: { //在这里定义vue可用的方法
-            show: function () {
+        methods: { //在这里定义vue可用的方法,show:function(){...}可以简写为show:(){...}
+            show() {
                 alert('hello')
             }
         }

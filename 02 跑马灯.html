@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <input type="button" value="start" @click="start">
+    <input type="button" value="stop" @click="stop">
+    <h4>{{msg}}</h4>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</body>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: '无形之刃，最为致命',
+            intervalId: null
+        },
+        methods: {
+            start() {
+                //=>解决this指向问题，=>内部的this等于外部的this
+                if (this.intervalId != null) {
+                    return;
+                }
+                this.intervalId = setInterval(() => {
+                    //vm 中调用data中的数据或methods中的方法，用this.
+                    var start = this.msg.substring(0, 1);
+                    console.log(start);
+                    var end = this.msg.substring(1);
+                    console.log(end);
+                    this.msg = end + start;
+                }, 400);
+
+            },
+
+            stop() {
+                clearInterval(this.intervalId);
+                this.intervalId = null;
+            }
+        }
+    })
+</script>
+</html>
