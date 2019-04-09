@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+    .inner{
+        height: 150px;
+        background-color: chocolate;
+    }
+</style>
+<body>
+
+<div id="app">
+
+    <div class="inner" @click="divHandler">
+        <!--使用.stop修饰符阻止冒泡（从里到外）-->
+        <input type="button" value="点击这里" @click.stop="btnHandler">
+    </div>
+
+    <!--使用.prevent修饰符阻止默认行为-->
+    <a href="http://baidu.com" @click.prevent="linkClick">百度一下</a>
+
+
+    <!--使用.capture修饰符捕获事件-->
+    <div class="inner" @click.capture="divHandler">
+        <input type="button" value="点击" @click="btnHandler">
+    </div>
+
+    <!--使用.self修饰符实现只有点击当前元素才能触发，冒泡和捕获等都不触发-->
+    <div class="inner" @click.self="divHandler">
+        <input type="button" value="点击" @click="btnHandler">
+    </div>
+
+
+     <!--使用.once修饰符配合其它修饰符，实现只生效一次-->
+    <a href="http://baidu.com" @click.prevent.once="linkClick">百度一下</a>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</body>
+<script>
+
+    new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+            divHandler(){
+                console.log('this is inner div click');
+            },
+            btnHandler(){
+                console.log('this is btn click');
+            },
+            linkClick(){
+                console.log('link click');
+            }
+        }
+    });
+
+</script>
+</html>
