@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+    .red {
+        color: red;
+    }
+
+    .thin {
+        font-weight: 200;
+    }
+
+    .italic {
+        font-style: italic;
+    }
+
+    .active {
+        letter-spacing: 0.5em;
+    }
+</style>
+<body>
+
+<div id="app">
+    <!--第一种使用方式，传一个数组，v-bind绑定class-->
+    <h1 :class="['red','thin']">这是一个H1。</h1>
+
+    <!--第二种使用方式，在数组中使用三元表达式-->
+    <h1 :class="['red','thin', flag?'active':'']">这是一个H1。</h1>
+
+    <!--第三种，在数组中嵌套对象key-value-->
+    <h1 :class="['red','thin', {'active':flag}]">这是一个H1。</h1>
+
+    <!--第四种，在class使用v-bind绑定对象的时候，对象的属性可以不带引号-->
+    <h1 :class="{red:true,thin:true,italic:false,active:false}">这是一个H1。</h1>
+    <h1 :class="classObj">这是一个H1。</h1>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</body>
+
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            flag: true,
+            classObj: {red:true,thin:true,italic:false,active:false},
+        },
+        methods: {}
+    })
+</script>
+</html>
