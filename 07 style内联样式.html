@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!--第一种，v-bind：style 绑定对象，如果对象对属性中带-，就不能省略引号-->
+    <h1 :style="{color:'red','font-weight':200}">这是H1。</h1>
+    <h1 :style="[styleObj1,styleObj2]">这是H1。</h1>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</body>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            styleObj1:{color:'red','font-weight':200},
+            styleObj2:{'font-style':'italic'}
+        },
+        methods: {
+
+        }
+    })
+</script>
+</html>
