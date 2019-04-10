@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!---->
+    <my-com0></my-com0>
+    <my-com0></my-com0>
+    <hr>
+    <my-com1></my-com1>
+    <my-com1></my-com1>
+    <hr>
+    <my-com2></my-com2>
+    <my-com2></my-com2>
+
+
+</div>
+
+
+
+<template id="tmp">
+    <div>
+        <h1>外部定义的</h1>
+        <p>good</p>
+    </div>
+</template>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</body>
+<script>
+    // template指向的标签内部只能有一个根结点
+    let com_title = Vue.extend({
+        template: '<div><h3>this is vue.extend<div><p>hello</p></div>'
+    });
+
+    //创建模板对象，如果使用驼峰命名，饮用时要用 -  (方式1)
+    Vue.component('myCom0', com_title);
+
+    // (方式2)
+    Vue.component('myCom1',Vue.extend({
+        template:'<div><h3>this is vue.extend<div><p>hello</p></div>'
+    }));
+
+    // (方式3)
+    Vue.component('myCom2',{
+       template: '#tmp'
+    });
+
+    new Vue({
+        el: '#app',
+        data: {},
+        methods: {}
+    })
+</script>
+</html>
