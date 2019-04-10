@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+    /* v-enter 是进入之前，元素的起始状态 */
+    /* v-leave-to 是动画离开之后，离开终止的状态，此时，元素动画已经结束 */
+
+    .v-enter,
+    .v-leave-to {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    /* v-enter-active 入场动画的时间段*/
+    /* v-leave-active 离场动画的时间段*/
+
+    .v-enter-active,
+    .v-leave-active {
+        transition: all 0.8s ease;
+    }
+
+
+    .slide-fade-enter, .slide-fade-leave-to {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    .slide-fade-enter-active,
+    .slide-fade-leave-active {
+        transition: all 0.8s ease;
+    }
+
+</style>
+<body>
+
+<div id="app">
+    <input type="button" value="toggle" @click="flag = !flag">
+    <!-- 需求：点击按钮使h3显示，再点击隐藏 -->
+    <!-- 1、不使用动画 -->
+    <!--<h3 v-if="flag">这是h3标签——无动画</h3>-->
+    <!-- 2、使用过渡类名实现动画 -->
+    <transition>
+        <h3 v-if="flag">这是h3标签——有动画</h3>>
+    </transition>
+
+
+    <transition name="slide-fade">
+        <p v-if="flag">hello</p>
+    </transition>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            flag: true
+        },
+        methods: {}
+    })
+</script>
+</html>
