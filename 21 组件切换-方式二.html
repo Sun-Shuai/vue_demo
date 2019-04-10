@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <h2>使用component元素切换组件</h2>
+    <a href="" @click.prevent="componentId='login'">登录</a>
+    <a href="" @click.prevent="componentId='register'">注册</a>
+    <component :is="componentId"></component>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</body>
+<script>
+    Vue.component('login',{
+        template:'<h3>登录组件</h3>'
+    });
+    Vue.component('register',{
+        template:'<h3>注册组件</h3>'
+    });
+    // 实例化vue对象
+    let vm = new Vue({
+        // 绑定对象
+        el:'#app',
+        data:{
+            componentId:'login'
+        },
+        methods:{
+
+        }
+    })
+</script>
+</html>
