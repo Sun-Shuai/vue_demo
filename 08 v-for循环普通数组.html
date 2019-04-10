@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <p>{{list[0]}}</p>
+    <p>{{list[1]}}</p>
+    <p>{{list[2]}}</p>
+    <p>{{list[3]}}</p>
+    <p>{{list[4]}}</p>
+
+
+
+    <p v-for="(item,index) in list">{{item}}----{{index}}</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            list: [1, 2, 3, 4, 5, 6],
+        },
+        methods: {}
+    })
+</script>
+</html>

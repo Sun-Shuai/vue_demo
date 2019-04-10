@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <p v-for="(value,key) in user">{{value}}---{{key}}</p>
+    <p v-for="(value,key,index) in user">{{value}}---{{key}}---{{index}}</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            user: {
+                id: 1,
+                name: 'zhangsan',
+                gender: '男'
+            }
+        },
+        methods: {}
+    })
+</script>
+</html>
