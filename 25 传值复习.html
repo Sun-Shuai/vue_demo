@@ -8,15 +8,15 @@
 
 <div id="app">
 
-    <vip_info v-bind:prop_user="user"></vip_info>
+    <vip_info v-bind:prop_user="user" @on-data-change="update_data"></vip_info>
 
 </div>
 
 
 <template id="vip_info">
     <div>
-        <input type="text" :value="prop_user.id">
-        <input type="text" :value="prop_user.name">
+        <input type="text" v-model="prop_user.id">
+        <input type="text" v-model="prop_user.name">
     </div>
 </template>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -31,21 +31,29 @@
                 name: 'suns',
             }
         },
-        methods: {},
+        methods: {
+            update_data(){
+                console.log('++++++');
+                this.user=value;
+            }
+        },
         components: {
             vip_info: {
                 template: '#vip_info',
                 props: ['prop_user'],
-                // data: function () {
-                //     return {
-                //         child_user: this.prop_user
-                //     }
-                // },
-                // watch: {
-                //     user(val) {
-                //         this.user = val;
-                //     }
-                // }
+                data: function () {
+                    return {
+                        child_user: this.prop_user
+                    }
+                },
+                watch: {
+                    prop_user(value) {
+                        this.child_user = value;
+                    },
+                    child_user(value){
+                        this.$emit('on-data-change',value);
+                    }
+                }
             }
         }
     })
