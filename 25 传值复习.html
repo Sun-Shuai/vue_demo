@@ -8,34 +8,34 @@
 
 <div id="app">
 
-    <vip_info></vip_info>
+    <vip_info v-bind:user="user"></vip_info>
 
 </div>
 
 
 <template id="vip_info">
     <div>
-        <input type="text" v-model="id">
-        <input type="text" v-model="name">
+        <input type="text" :value="user.id">
+        <input type="text" :value="user.name">
     </div>
 </template>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 </body>
 <script>
-    new Vue({
+    let vm = new Vue({
         el: '#app',
-        data: {},
+        data: {
+            user: {
+                id: 1,
+                name: 'suns',
+            }
+        },
         methods: {},
         components: {
             vip_info: {
-                data() {
-                    return {
-                        id: null,
-                        name: null,
-                    }
-                },
-                template: '#vip_info'
+                template: '#vip_info',
+                props:['user'],
             }
         }
     })
