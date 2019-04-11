@@ -18,7 +18,7 @@
         // 绑定对象
         el: '#app',
         data: {
-            msg: "1213-父组件中的数据"
+            msg: ["父组件中的数据-1213","父组件中的数据-1314"]
         },
         methods: {},
         components: {
@@ -26,16 +26,13 @@
             com1: {
                 data(){
                     return {
-                        title: '子组件title'
+                        title: '子组件中自己的数据'
                     }
                 },
-                template: "<h1 @click='change'>这是子组件——{{parentmsg}}</h1>",
+                template: "<div><h1>{{title}}</h1><h1 v-text='parentmsg[0]'></h1><h1 v-text='parentmsg[1]'></h1></div>",
                 // 把父组件传递过来的parentmsg属性，先在 props 数组中，定义一下，这样，才能使用这个数据
                 props: ['parentmsg'],
                 methods: {
-                    change(){
-                        this.parentmsg = "被修改了"
-                    }
                 }
             }
         }
