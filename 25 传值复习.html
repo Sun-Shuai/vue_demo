@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <vip_info></vip_info>
+
+</div>
+
+
+<template id="vip_info">
+    <div>
+        <input type="text" v-model="id">
+        <input type="text" v-model="name">
+    </div>
+</template>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {},
+        methods: {},
+        components: {
+            vip_info: {
+                data() {
+                    return {
+                        id: null,
+                        name: null,
+                    }
+                },
+                template: '#vip_info'
+            }
+        }
+    })
+</script>
+</html>
